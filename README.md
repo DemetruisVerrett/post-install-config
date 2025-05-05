@@ -5,11 +5,17 @@
 <h1>osTicket - Post-Install Configuration</h1>
 This tutorial outlines the post-install configuration of the open-source help desk ticketing system osTicket.<br />
 
+
+<h2>Video Demonstration</h2>
+
+- ### [Clipchamp: How To Configure osTicket, post-installation](https://1drv.ms/v/c/5dac4edc6b620d54/Ed3lenkHFepHmWgKEXFMaL0Bz0z8JcMRWHWfwW97keGueg)
+
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Internet Information Services (IIS)
+- osTicket System
 
 <h2>Operating Systems Used </h2>
 
@@ -17,100 +23,110 @@ This tutorial outlines the post-install configuration of the open-source help de
 
 <h2>Post-Install Configuration Objectives</h2>
 
--	Roles
-- Departments
-- Teams
-- Agents (workers)
-- Users (customers)
-- Help Topics
-- Service Level Agreements (SLAs)
+- osTicketing system Configurations:
+  
+-Ticket properties
+
+-Agents
+
+-Help Topics
+
+-SLA
+
+-Departments
+
+-Roles/Permissions
+
+-Users/Teams
 
 <h2>Configuration Steps</h2>
 
 <p>
-<img src="" height="80%" width="80%"/>
+  
+![Image](https://github.com/user-attachments/assets/cb635b0f-9d50-48b3-9752-1dc53abf7163)
+
 </p>
 <p>
-Now that osTicket has been successfully configured on our virtual machine, we’ll set system administrative tasks within osTicket. We will begin by configuring roles within the help desk. By doing so, we will be able to effectively manage permissions and user access. 
+1.Admin/Analyst Login Page:
+URL: http://localhost/osTicket/scp/login.php
+
+This is where Admin and Analyst users log in to manage the osTicket system.
+
+2.End Users osTicket URL:
+
+URL: http://localhost/osTicket
+This is the URL for end-users to access and submit support tickets.
+
+3.Acknowledge Agent Panel vs Admin Panel:
+
+The Agent Panel allows agents to manage tickets, assign them, and communicate with users.
+The Admin Panel gives full access to system settings, configurations, and advanced user management.
+
+4.Configure Roles:
+
+Path: Admin Panel -> Agents -> Roles
+You can define different roles for users, such as Supreme Admin, with specific permissions to control who can access certain features or settings.
+
+5.Configure Departments:
+
+Path: Admin Panel -> Agents -> Departments
+Departments allow you to define ticket visibility, such as restricting tickets to certain groups like Help Desk, SysAdmins, or Networking.
+
+6.Configure Teams:
+
+Path: Admin Panel -> Agents -> Teams
+Teams allow you to group agents from different departments. For example, you can create a Online Banking team, pulling agents from various departments.
+
+7.Allow Anyone to Create Tickets:
+
+Path: Admin Panel -> Settings -> User Settings
+UNCHECK the option to allow unregistered users to create tickets. This ensures that users must register and log in to submit tickets.
+Registration Required: Enable the "Require registration and login to create tickets" option for more control over who can create tickets.
+
+This setup allows for a flexible and organized ticketing system with clear roles, permissions, and team structures.
 </p>
 <br />
 
 <p>
-<img src="" height="80%" width="80%"/>
+  
+![Image](https://github.com/user-attachments/assets/873f465c-c968-49c4-8f9c-3f3435bc9c26)
+
 </p>
 <p>
-To configure roles within help desk, we go to the Admin Panel > Agents > Roles. Click on “Add new role”. 
+1.Configure Agents (Workers):
+
+
+Path: Admin Panel -> Agents -> Add New
+Jane: Assigned to SysAdmins department.
+John: Assigned to Support department.
+
+2.Configure Users (Customers):
+
+
+Path: Agent Panel -> Users -> Add New
+Karen and Ken are added as users (customers) in the system.
+
+3.Configure SLA (Service Level Agreements):
+
+
+Path: Admin Panel -> Manage -> SLA
+Sev-A: Grace Period: 1 hour, Schedule: 24/7
+Sev-B: Grace Period: 4 hours, Schedule: 24/7
+Sev-C: Grace Period: 8 hours, Schedule: Business Hours
+
+4.Configure Help Topics (For when Users Create a Ticket):
+
+
+Path: Admin Panel -> Manage -> Help Topics
+Available help topics for users when submitting a ticket:
+Business Critical Outage
+Personal Computer Issues
+Equipment Request
+Password Reset
+Other
+
+This setup helps define your team structure, user roles, SLA response times, and the categories available for users when submitting support tickets.
+
+
 </p>
 <br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-We then enter the name of the new role, such as Supreme Admin. This will allow us to define the responsibilities and permissions for that role. Since we are creating a Supreme Admin role, we will ensure that all available permissions are selected to provide full administrative access. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-Next, we select the “Departments” button in the Agents tab. Here we will create a new department, with each agent assigned to a specific department based on their role within our help desk. We create a “System Administrators” department. Keep in mind that additional settings, such as Service Level Agreements (SLAs), managers, and email configurations, can also be customized within the Departments tab to coincide with our help desk’s operational needs. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-We then move to configure teams. Teams allow us to group agents from different departments to collaborate. We navigate to Admin Panel > Agents > Teams. We create a team called “Level II Support” and assign agents from various departments as needed. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-In order to allow anyone to create tickets, we go to Admin Panel > Settings > Users. We uncheck the option called “Require registration and login to create tickets”. This will enable unregistered users (those without an account) to submit tickets as needed. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-Before any tickets can be processed, we need to configure agents (workers). We go to Admin Panel > Agents > Add New Agent. We fill in the details for each agent, including their name, email address, assigned role and department. This will set up each agent’s profile and appropriate permissions. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-For the purposes of our project, we need to configure users (customers). We go to the Agent Panel > Users > User Directory > Add User. We add users Shawn and Rachel by entering their details, including their names and email addresses. This will enable our users to submit and manage their tickets. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-To assist users in submitting tickets, it’s advisable to configure help topics. We navigate to Admin Panel > Manage > Help Topics. The help topics we add can then be used as a guide to users in categorizing their tickets more effectively. 
-</p>
-<br />
-
-<p>
-<img src="" height="80%" width="80%"/>
-</p>
-<p>
-As tickets are generated, it’s a good idea for agents to categorize them based on pre-determined priorities. Service Level Agreements (SLAs) are a great way to do this so that tickets with the highest urgency are dealt with more quickly. To configure SLAs we go toAdmin Panel > Manage > SLA. 
-</p>
-<br /> 
